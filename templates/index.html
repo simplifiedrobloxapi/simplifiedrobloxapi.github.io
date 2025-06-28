@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox API Docs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .content {
+            padding: 40px 20px;
+            max-width: 1300px;
+            margin: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+            cursor: pointer;
+        }
+        .endpoint {
+            margin-bottom: 30px;
+        }
+        .example {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+        .form-container {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container label {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .form-container input[type="text"] {
+            padding: 12px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container input[type="submit"] {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .form-container input[type="text"] {
+                max-width: 100%;
+            }
+            .form-container input[type="submit"] {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .form-container input[type="text"] {
+                font-size: 1.1em;
+            }
+            .form-container input[type="submit"] {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simplified Roblox API Documentation</h1>
+    </header>
+
+    <div class="content">
+        <p>Welcome to the Simplified Roblox API! Below is the documentation on how to use the available endpoints.</p>
+
+        <div class="category">
+            <h2 onclick="toggleCategory('users')">Users</h2>
+            <div id="users" style="display:none;">
+                <div class="endpoint">
+                    <h3 onclick="toggleEndpoint('getuseridfromusername')">GET /api/v1/getuseridfromusername</h3>
+                    <div id="getuseridfromusername" style="display:none;">
+                        <p>This endpoint retrieves a Roblox user ID from a given username.</p>
+                        <h4>Parameters</h4>
+                        <ul>
+                            <li><strong>username</strong> (required): The username to fetch the user ID for.</li>
+                        </ul>
+                        <h4>Example Request</h4>
+                        <div class="example">
+                            <code>GET https://simplifiedrobloxapi.onrender.com/api/v1/getuseridfromusername?username=example_username</code>
+                        </div>
+                        <h4>Example Response</h4>
+                        <div class="example">
+                            <code>{ "user_id": 12345678 }</code>
+                        </div>
+                        <h4>Error Response</h4>
+                        <div class="example">
+                            <code>{ "error": "User not found or an error occurred" }</code>
+                        </div>
+
+                        <div class="form-container">
+                            <h3>Try it out!</h3>
+                            <form action="https://simplifiedrobloxapi.onrender.com/api/v1/getuseridfromusername" method="get">
+                                <label for="username">Enter Username:</label>
+                                <input type="text" id="username" name="username" required>
+                                <input type="submit" value="Get User ID">
+                            </form>
+                        </div>
+
+                        <div class="response">
+                            <h4>Response:</h4>
+                            <pre id="response"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 onclick="toggleCategory('places')">Places</h2>
+            <div id="places" style="display:none;">
+                <div class="endpoint">
+                    <h3 onclick="toggleEndpoint('getuniverseidfromplaceid')">GET /api/v1/getuniverseidfromplaceid</h3>
+                    <div id="getuniverseidfromplaceid" style="display:none;">
+                        <p>This endpoint retrieves the Universe ID for a given Place ID.</p>
+                        <h4>Parameters</h4>
+                        <ul>
+                            <li><strong>placeid</strong> (required): The Place ID to fetch the Universe ID for.</li>
+                        </ul>
+                        <h4>Example Request</h4>
+                        <div class="example">
+                            <code>GET https://simplifiedrobloxapi.onrender.com/api/v1/getuniverseidfromplaceid?placeid=123456789</code>
+                        </div>
+                        <h4>Example Response</h4>
+                        <div class="example">
+                            <code>{ "universe_id": 987654321 }</code>
+                        </div>
+                        <h4>Error Response</h4>
+                        <div class="example">
+                            <code>{ "error": "Place not found or an error occurred" }</code>
+                        </div>
+
+                        <div class="form-container">
+                            <h3>Try it out!</h3>
+                            <form action="https://simplifiedrobloxapi.onrender.com/api/v1/getuniverseidfromplaceid" method="get">
+                                <label for="placeid">Enter Place ID:</label>
+                                <input type="text" id="placeid" name="placeid" required>
+                                <input type="submit" value="Get Universe ID">
+                            </form>
+                        </div>
+
+                        <div class="response">
+                            <h4>Response:</h4>
+                            <pre id="response"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Simplified Roblox API</p>
+    </footer>
+
+    <script>
+        function toggleCategory(category) {
+            var element = document.getElementById(category);
+            element.style.display = (element.style.display === "none") ? "block" : "none";
+        }
+
+        function toggleEndpoint(endpoint) {
+            var element = document.getElementById(endpoint);
+            element.style.display = (element.style.display === "none") ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
